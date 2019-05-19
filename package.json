@@ -1,0 +1,41 @@
+{
+  "name": "vuejs-highlight",
+  "version": "0.0.1",
+  "description": "vue highlight.js",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "vue",
+    "highlight"
+  ],
+  "author": "toaonly42@gmail.com",
+  "license": "ISC",
+  "files": [
+    "index.js",
+    "types/*.d.ts"
+  ],
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "babel-core": "^6.26.3",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^2.1.1",
+    "to-string-loader": "^1.1.5",
+    "vue-hot-reload-api": "^2.3.3",
+    "vue-style-loader": "^4.1.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.4",
+    "highlight.js": "^9.15.6",
+    "vue": "^2.6.10"
+  },
+  "typings": "types/index.d.ts",
+  "homepage": "https://github.com/toaonly/vuejs-highlight#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toaonly/vuejs-highlight"
+  }
+}
