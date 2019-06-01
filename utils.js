@@ -4,7 +4,7 @@ let latestTheme
 export function getTheme(theme) {
   if(latestTheme) {
     const head = document.head
-    const latestStyle = document.querySelector(`style[data-hljs="${latestTheme}"]`)
+    const latestStyle = document.querySelector(`[data-hljs="${latestTheme}"]`)
 
     head.removeChild(latestStyle)
   }
@@ -13,6 +13,7 @@ export function getTheme(theme) {
     reloadTheme(theme)
   } else {
     require(`highlight.js/styles/${theme}.css`)
+    console.log(require('highlight.js/styles/default.css'))
     setThemeId(theme)
   }
 }

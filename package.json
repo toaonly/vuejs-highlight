@@ -1,18 +1,23 @@
 {
   "name": "vuejs-highlight",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vue highlight.js",
   "main": "index.js",
   "scripts": {},
   "keywords": [
     "vue",
-    "highlight"
+    "highlight",
+    "highlight.js"
   ],
   "author": "toaonly42@gmail.com",
   "license": "ISC",
   "files": [
     "index.js",
-    "types/*.d.ts"
+    "Highlight.js",
+    "utils.js",
+    "types/*.d.ts",
+    ".postcssrc.js",
+    ".babelrc"
   ],
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",

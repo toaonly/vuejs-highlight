@@ -36,6 +36,8 @@ Vue.use(VueHighlight);
 </Highlight>
 ```
 
+---
+
 # Language List
 
 * javascript(js)
@@ -223,6 +225,8 @@ Vue.use(VueHighlight);
 * xquery
 * yaml
 * zephir
+
+---
 
 # Theme List
 
