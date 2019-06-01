@@ -13,7 +13,6 @@ export function getTheme(theme) {
     reloadTheme(theme)
   } else {
     require(`highlight.js/styles/${theme}.css`)
-    console.log(require('highlight.js/styles/default.css'))
     setThemeId(theme)
   }
 }
