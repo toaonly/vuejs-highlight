@@ -13,6 +13,7 @@
   "license": "ISC",
   "files": [
     "index.js",
+    "languages.js",
     "Highlight.js",
     "utils.js",
     "types/*.d.ts",
