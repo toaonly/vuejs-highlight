@@ -1,6 +1,6 @@
 import { Component } from 'vue'
 import hljs from 'highlight.js/lib/highlight'
-import { getTheme } from './utils'
+import { getTheme, getLanguage } from './utils'
 
 /**
  * @type {Component}
@@ -20,28 +20,52 @@ const HighlightVue = {
     }
   },
 
+  computed: {
+    className() {
+      const language = this.language
+      let className
+
+      switch(language) {
+        case 'js':
+          className = 'javascript'
+          break
+        case 'ts':
+          className = 'typescript'
+          break
+        default:
+          className = language
+          break
+      }
+
+      return className
+    }
+  },
+
   watch: {
     theme() {
+      this.init()
+    },
+
+    language() {
+      this.init()
+    }
+  },
+
+  methods: {
+    init() {
+      const className = this.className
+      const language = getLanguage(className)
+      
       getTheme(this.theme)
+
+      hljs.registerLanguage(className, language)
+      hljs.highlightBlock(this.$el.querySelector('code'))
     }
   },
 
   render(h) {
-    const language = this.$props.language
     const children = []
-    let className
-
-    switch(language) {
-      case 'js':
-        className = 'javascript'
-        break
-      case 'ts':
-        className = 'typescript'
-        break
-      default:
-        className = language
-        break
-    }
+    let className = this.className
 
     children.push(
       h(
@@ -61,8 +85,7 @@ const HighlightVue = {
   },
 
   mounted() {
-    hljs.highlightBlock(this.$el.querySelector('code'))
-    getTheme(this.theme)
+    this.init()
   }
 }
 

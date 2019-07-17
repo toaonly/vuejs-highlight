@@ -1,6 +1,6 @@
 {
   "name": "vuejs-highlight",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "vue highlight.js",
   "main": "index.js",
   "scripts": {},
@@ -21,6 +21,7 @@
   ],
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",
+    "autoprefixer": "^9.6.1",
     "babel-core": "^6.26.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^8.0.6",
@@ -28,13 +29,15 @@
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^2.1.1",
+    "postcss": "^7.0.17",
+    "postcss-loader": "^3.0.0",
     "to-string-loader": "^1.1.5",
     "vue-hot-reload-api": "^2.3.3",
     "vue-style-loader": "^4.1.2"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^9.15.8",
     "vue": "^2.6.10"
   },
   "typings": "types/index.d.ts",

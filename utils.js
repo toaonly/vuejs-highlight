@@ -1,9 +1,12 @@
+import languages from './languages'
+
 const loadedThemeMap = {}
 let latestTheme
 
 export function getTheme(theme) {
+  const head = document.head
+
   if(latestTheme) {
-    const head = document.head
     const latestStyle = document.querySelector(`[data-hljs="${latestTheme}"]`)
 
     head.removeChild(latestStyle)
@@ -12,9 +15,30 @@ export function getTheme(theme) {
   if(loadedThemeMap[theme]) {
     reloadTheme(theme)
   } else {
-    require(`highlight.js/styles/${theme}.css`)
-    setThemeId(theme)
+    const cssURL = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/${theme}.min.css`
+
+    fetch(cssURL)
+      .then(res => {
+        if(res.status === 200) {
+          const link = document.createElement('link')
+
+          link.setAttribute('rel', 'stylesheet')
+          link.setAttribute('type', 'text/css')
+          link.setAttribute('href', cssURL)
+
+          head.appendChild(link)
+
+          setThemeId(link, theme)
+        }
+      })
+      .catch(e => {
+        console.warn(e.message)
+      })
   }
+}
+
+export function getLanguage(language) {
+  return languages[language]
 }
 
 function reloadTheme(theme) {
@@ -26,18 +50,8 @@ function reloadTheme(theme) {
   latestTheme = theme
 }
 
-function setThemeId(theme) {
-  for(let i = 0; i < document.styleSheets.length; i++) {
-    let item = document.styleSheets.item(i)
-    
-    if(item.rules[0] && item.rules[0].selectorText) {
-      if(item.rules[0].selectorText.match('.hljs')) {
-        let hljsStyle = item.ownerNode
-
-        hljsStyle.dataset['hljs'] = theme
-        loadedThemeMap[theme] = hljsStyle
-        latestTheme = theme
-      }
-    }
-  }
+function setThemeId(link, theme) {
+  link.dataset['hljs'] = theme
+  loadedThemeMap[theme] = link
+  latestTheme = theme
 }
